@@ -4,5 +4,6 @@ import booktest.views
 urlpatterns = [
     url(r'^$',booktest.views.index),
     url(r'^area/$',booktest.views.area),
-    url(r'^area/(\d+)/$',booktest.views.area2),
+    url(r'^area/pro/$',booktest.views.pro),
+    url(r'^area/city(\d+)/$',booktest.views.city),
 ]

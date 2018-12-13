@@ -14,15 +14,20 @@ def index(request):
 def area(request):
     return render(request,'booktest/area.html')
 
-def area2(request,id):
-    id1=int(id)
-    if id1==0:
-        data=AreaInfo.objects.filter(parea=0)
-    else:
-        data=[{}]
-    #data1 = {'data':data}
-    print(data)
+def pro(request):
+
+    data=AreaInfo.objects.filter(parea_id=0)
+
+    #print(data)
     list =[]
     for area in data:
         list.append([area.id,area.title])
+    return JsonResponse({'data':list})
+
+
+def city(request,id):
+    citylist=AreaInfo.objects.filter(parea__id=id)
+    list=[]
+    for item in citylist:
+        list.append({'id':item.id,'title':item.title})
     return JsonResponse({'data':list})
